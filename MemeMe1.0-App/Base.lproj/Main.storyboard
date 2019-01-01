@@ -55,6 +55,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cameraButton" destination="5Xh-l8-eXX" id="ntj-ss-vw5"/>
+                        <outlet property="cancelButton" destination="cF3-Jc-WSv" id="Lxb-FG-Hvm"/>
                         <outlet property="imagePickerView" destination="Xk6-i9-IGl" id="8HQ-fh-yIC"/>
                     </connections>
                 </viewController>

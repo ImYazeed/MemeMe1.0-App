@@ -12,6 +12,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
 
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
