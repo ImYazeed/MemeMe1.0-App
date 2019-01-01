@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1BW-GN-iag">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,40 +14,62 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe1_0_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="il8-Tx-9M8">
-                                <rect key="frame" x="0.0" y="729" width="375" height="49"/>
+                                <rect key="frame" x="0.0" y="902" width="453" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="9E3-vI-dgu"/>
+                                    <constraint firstAttribute="height" constant="44" id="HRn-hB-EJc"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem width="106" style="plain" systemItem="fixedSpace" id="Ips-Nk-rEf"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Ggc-Li-gvI"/>
                                     <barButtonItem systemItem="camera" id="5Xh-l8-eXX">
                                         <connections>
                                             <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="oGD-TL-C3r"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="50" style="plain" systemItem="fixedSpace" id="gSg-Pw-gnf"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="S5e-43-h0W"/>
                                     <barButtonItem title="Album" width="74.5" id="Spk-iq-zoW">
                                         <connections>
                                             <action selector="pickAnImageAlbum:" destination="BYZ-38-t0r" id="3KQ-7z-W9V"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="fixedSpace" id="ozW-Uk-qgd"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="31K-2k-26y"/>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xk6-i9-IGl">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xk6-i9-IGl">
+                                <rect key="frame" x="0.0" y="88" width="414" height="730"/>
+                                <color key="backgroundColor" red="0.42959073469999998" green="0.4600339564" blue="0.50263115280000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BZL-bw-EUB">
+                                <rect key="frame" x="20" y="132" width="374" height="47"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OLA-zO-6ar">
+                                <rect key="frame" x="20" y="727" width="374" height="47"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="il8-Tx-9M8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8Gm-0F-Xa4"/>
-                            <constraint firstItem="il8-Tx-9M8" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="l3c-BU-Pei"/>
-                            <constraint firstItem="il8-Tx-9M8" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="lY1-ED-z7u"/>
+                            <constraint firstItem="BZL-bw-EUB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="44" id="1sv-lJ-qef"/>
+                            <constraint firstItem="il8-Tx-9M8" firstAttribute="top" secondItem="OLA-zO-6ar" secondAttribute="bottom" constant="44" id="2UK-JD-7CB"/>
+                            <constraint firstItem="Xk6-i9-IGl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="8Wa-Tk-SZz"/>
+                            <constraint firstItem="OLA-zO-6ar" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Fa4-bX-jki"/>
+                            <constraint firstItem="il8-Tx-9M8" firstAttribute="top" secondItem="Xk6-i9-IGl" secondAttribute="bottom" id="KDP-Ru-Kj9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OLA-zO-6ar" secondAttribute="trailing" constant="20" id="QlN-pK-pug"/>
+                            <constraint firstItem="BZL-bw-EUB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="UzT-Ya-FpJ"/>
+                            <constraint firstItem="il8-Tx-9M8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XmV-ht-DvC"/>
+                            <constraint firstItem="Xk6-i9-IGl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="haO-wH-RHS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BZL-bw-EUB" secondAttribute="trailing" constant="20" id="iA1-vh-bWk"/>
+                            <constraint firstItem="il8-Tx-9M8" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="idr-Jo-7mw"/>
+                            <constraint firstItem="il8-Tx-9M8" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="j8I-iF-39p"/>
+                            <constraint firstItem="Xk6-i9-IGl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qhO-t6-tUY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -68,7 +90,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1079.2" y="133.00492610837438"/>
+            <point key="canvasLocation" x="1078.2608695652175" y="132.58928571428572"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MFe-TX-kdj">
@@ -76,7 +98,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1BW-GN-iag" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nq2-1z-Ie9">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

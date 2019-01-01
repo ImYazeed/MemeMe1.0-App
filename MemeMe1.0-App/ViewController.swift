@@ -30,18 +30,18 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     // MARK : ACTIONS
     
     @IBAction func pickAnImageAlbum(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+        createImagePickerView(withSourceType: .photoLibrary)
         
     }
     
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
+        createImagePickerView(withSourceType: .camera)
+        
+    }
+    
+    @IBAction func cancelButton(_ sender: Any) {
+        imagePickerView.image = nil
+        configureNavigationBarItems()
     }
     
     // MARK : imagePickerControllerDelegate
@@ -60,14 +60,18 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func cancelButton(_ sender: Any) {
-        imagePickerView.image = nil
-        configureNavigationBarItems()
-    }
+
     
     func configureNavigationBarItems() {
         importButton.isEnabled = (imagePickerView.image != nil) ? true : false
         cancelButton.isEnabled = (imagePickerView.image != nil) ? true : false
+    }
+    
+    func createImagePickerView(withSourceType sourceType:UIImagePickerController.SourceType) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = sourceType
+        present(imagePicker, animated: true, completion: nil)
     }
 }
 
