@@ -16,6 +16,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var toolBar: UIToolbar!
     
     let textField_Delegate = textFieldDelegate()
     
@@ -61,10 +62,26 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         
     }
     
+    @IBAction func shareMeme(_ sender: Any) {
+        let memedImage = generateMemedImage()
+        let activityViewVC = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        
+        
+        activityViewVC.completionWithItemsHandler = { (activityType, completed, returnedItems, activityError) -> () in
+            if (completed) {
+                self.save()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        
+       present(activityViewVC, animated: true, completion: nil)
+        
+    }
     @IBAction func cancelButton(_ sender: Any) {
         imagePickerView.image = nil
         configureNavigationBarItems()
-        
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
     }
     
     // MARK : imagePickerControllerDelegate
@@ -97,10 +114,29 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         present(imagePicker, animated: true, completion: nil)
     }
     
+    func generateMemedImage() -> UIImage {
+        
+        // Hide NavBar and ToolBar
+        self.navigationController?.navigationBar.isHidden = true
+        self.toolBar.isHidden = true
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        // reShow NavBar and ToolBar
+        self.navigationController?.navigationBar.isHidden = false
+        self.toolBar.isHidden = false
+        
+        return memedImage
+    }
     
     func save() {
         // Create the meme
-        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: imagePickerView.image!)
+        let memedImage:UIImage = generateMemedImage()
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
     }
     
     func subscribeToKeyboardNotifications() {

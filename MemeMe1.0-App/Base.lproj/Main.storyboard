@@ -74,7 +74,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="nVF-82-Qoe">
-                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="8ln-aW-qpA"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="8ln-aW-qpA">
+                            <connections>
+                                <action selector="shareMeme:" destination="BYZ-38-t0r" id="CcG-ps-Hyp"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="tSG-Ph-Jed">
                             <connections>
                                 <action selector="cancelButton:" destination="BYZ-38-t0r" id="n8H-c1-O4l"/>
@@ -87,6 +91,7 @@
                         <outlet property="cancelButton" destination="tSG-Ph-Jed" id="zVd-FG-PT5"/>
                         <outlet property="imagePickerView" destination="Xk6-i9-IGl" id="8HQ-fh-yIC"/>
                         <outlet property="importButton" destination="8ln-aW-qpA" id="jej-xi-M95"/>
+                        <outlet property="toolBar" destination="il8-Tx-9M8" id="cqh-wk-4eZ"/>
                         <outlet property="topTextField" destination="BZL-bw-EUB" id="ZzX-5W-pAL"/>
                     </connections>
                 </viewController>
