@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -64,6 +64,7 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
     @IBAction func cancelButton(_ sender: Any) {
         imagePickerView.image = nil
         configureNavigationBarItems()
+        
     }
     
     // MARK : imagePickerControllerDelegate
@@ -94,6 +95,12 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         imagePicker.delegate = self
         imagePicker.sourceType = sourceType
         present(imagePicker, animated: true, completion: nil)
+    }
+    
+    
+    func save() {
+        // Create the meme
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: imagePickerView.image!)
     }
     
     func subscribeToKeyboardNotifications() {
