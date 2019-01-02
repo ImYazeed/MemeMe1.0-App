@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="il8-Tx-9M8">
-                                <rect key="frame" x="0.0" y="902" width="453" height="44"/>
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="HRn-hB-EJc"/>
                                 </constraints>
@@ -42,13 +42,13 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="730"/>
                                 <color key="backgroundColor" red="0.42959073469999998" green="0.4600339564" blue="0.50263115280000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BZL-bw-EUB">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="BZL-bw-EUB">
                                 <rect key="frame" x="20" y="132" width="374" height="47"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OLA-zO-6ar">
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OLA-zO-6ar">
                                 <rect key="frame" x="20" y="727" width="374" height="47"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
@@ -82,10 +82,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomTextField" destination="OLA-zO-6ar" id="Bnb-WJ-rSu"/>
                         <outlet property="cameraButton" destination="5Xh-l8-eXX" id="ntj-ss-vw5"/>
                         <outlet property="cancelButton" destination="tSG-Ph-Jed" id="zVd-FG-PT5"/>
                         <outlet property="imagePickerView" destination="Xk6-i9-IGl" id="8HQ-fh-yIC"/>
                         <outlet property="importButton" destination="8ln-aW-qpA" id="jej-xi-M95"/>
+                        <outlet property="topTextField" destination="BZL-bw-EUB" id="ZzX-5W-pAL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
