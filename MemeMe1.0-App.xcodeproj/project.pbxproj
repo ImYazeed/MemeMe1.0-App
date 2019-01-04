@@ -57,6 +57,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		BB17B4A921DFC00500499C6D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F5A7B21421DA6D8A00E9B84C /* MemeEditorViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		F5A7B20621DA6D8A00E9B84C = {
 			isa = PBXGroup;
 			children = (
@@ -77,9 +85,9 @@
 			isa = PBXGroup;
 			children = (
 				BB17B4A621DD3D3A00499C6D /* Models */,
+				BB17B4A921DFC00500499C6D /* ViewControllers */,
 				BB17B4A521DD3D1600499C6D /* Helper */,
 				F5A7B21221DA6D8A00E9B84C /* AppDelegate.swift */,
-				F5A7B21421DA6D8A00E9B84C /* MemeEditorViewController.swift */,
 				F5A7B21621DA6D8A00E9B84C /* Main.storyboard */,
 				F5A7B21C21DA6D8B00E9B84C /* Assets.xcassets */,
 				F5A7B21E21DA6D8B00E9B84C /* LaunchScreen.storyboard */,

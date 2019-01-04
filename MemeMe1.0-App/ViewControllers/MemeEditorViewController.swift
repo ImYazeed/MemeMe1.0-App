@@ -10,6 +10,7 @@ import UIKit
 
 class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
+    // Outlet
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var importButton: UIBarButtonItem!
@@ -18,6 +19,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var toolBar: UIToolbar!
     
+    // Helpers
     let textField_Delegate = textFieldDelegate()
     
     
@@ -27,15 +29,12 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSAttributedString.Key.strokeWidth: -3
     ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBarItems()
-        topTextField.delegate = self.textField_Delegate
-        bottomTextField.delegate = self.textField_Delegate
-        topTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.textAlignment = .center
-        bottomTextField.textAlignment = .center
+        configureTextFields(textField: topTextField)
+        configureTextFields(textField: bottomTextField)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,22 +49,19 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
     }
     
     
-    // MARK : ACTIONS
+    // MARK: ACTIONS
     
     @IBAction func pickAnImageAlbum(_ sender: Any) {
         createImagePickerView(withSourceType: .photoLibrary)
-        
     }
     
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
         createImagePickerView(withSourceType: .camera)
-        
     }
     
     @IBAction func shareMeme(_ sender: Any) {
         let memedImage = generateMemedImage()
         let activityViewVC = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
-        
         
         activityViewVC.completionWithItemsHandler = { (activityType, completed, returnedItems, activityError) -> () in
             if (completed) {
@@ -77,6 +73,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
        present(activityViewVC, animated: true, completion: nil)
         
     }
+    
     @IBAction func cancelButton(_ sender: Any) {
         imagePickerView.image = nil
         configureNavigationBarItems()
@@ -84,7 +81,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         bottomTextField.text = "BOTTOM"
     }
     
-    // MARK : imagePickerControllerDelegate
+    // MARK: imagePickerControllerDelegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
@@ -100,19 +97,28 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         dismiss(animated: true, completion: nil)
     }
     
-
-    
-    func configureNavigationBarItems() {
-        importButton.isEnabled = (imagePickerView.image != nil)
-        cancelButton.isEnabled = (imagePickerView.image != nil)
-    }
-    
     func createImagePickerView(withSourceType sourceType:UIImagePickerController.SourceType) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = sourceType
         present(imagePicker, animated: true, completion: nil)
     }
+    
+    // MARK: Element Configuration
+    
+    func configureNavigationBarItems() {
+        importButton.isEnabled = (imagePickerView.image != nil)
+        cancelButton.isEnabled = (imagePickerView.image != nil)
+    }
+    
+    func configureTextFields(textField: UITextField){
+        textField.delegate = self.textField_Delegate
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .center
+    }
+    
+  
+    // MARK: Meme image
     
     func generateMemedImage() -> UIImage {
         
@@ -137,7 +143,11 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         // Create the meme
         let memedImage:UIImage = generateMemedImage()
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
+        (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
+
     }
+    
+    // MARK: KEYBOARD MOVMENT
     
     func subscribeToKeyboardNotifications() {
         
@@ -172,5 +182,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.cgRectValue.height
     }
+    
+
 }
 
