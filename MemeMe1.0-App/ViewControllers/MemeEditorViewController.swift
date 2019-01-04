@@ -111,6 +111,11 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         cancelButton.isEnabled = (originalImage.image != nil)
     }
     
+    func configureBars(_ isHidden: Bool) {
+        self.navigationController?.navigationBar.isHidden = isHidden
+        self.toolBar.isHidden = isHidden
+    }
+    
     func configureTextFields(textField: UITextField){
         textField.delegate = self.textField_Delegate
         textField.defaultTextAttributes = memeTextAttributes
@@ -123,8 +128,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
     func generateMemedImage() -> UIImage {
         
         // Hide NavBar and ToolBar
-        self.navigationController?.navigationBar.isHidden = true
-        self.toolBar.isHidden = true
+        configureBars(true)
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -133,8 +137,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         UIGraphicsEndImageContext()
         
         // reShow NavBar and ToolBar
-        self.navigationController?.navigationBar.isHidden = false
-        self.toolBar.isHidden = false
+        configureBars(false)
         
         return memedImage
     }
