@@ -11,7 +11,7 @@ import UIKit
 class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
     // Outlet
-    @IBOutlet weak var imagePickerView: UIImageView!
+    @IBOutlet weak var originalImage: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var importButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
@@ -75,7 +75,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
     }
     
     @IBAction func cancelButton(_ sender: Any) {
-        imagePickerView.image = nil
+        originalImage.image = nil
         configureNavigationBarItems()
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
@@ -85,7 +85,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            imagePickerView.image = image
+            originalImage.image = image
             configureNavigationBarItems()
             self.imagePickerControllerDidCancel(picker)
             
@@ -107,8 +107,8 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
     // MARK: Element Configuration
     
     func configureNavigationBarItems() {
-        importButton.isEnabled = (imagePickerView.image != nil)
-        cancelButton.isEnabled = (imagePickerView.image != nil)
+        importButton.isEnabled = (originalImage.image != nil)
+        cancelButton.isEnabled = (originalImage.image != nil)
     }
     
     func configureTextFields(textField: UITextField){
@@ -142,7 +142,7 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
     func save() {
         // Create the meme
         let memedImage:UIImage = generateMemedImage()
-        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: memedImage)
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: originalImage.image!, memedImage: memedImage)
         (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
 
     }
